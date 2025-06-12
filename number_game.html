@@ -1,0 +1,118 @@
+<html>
+    <head>
+    <style>
+        #result{
+            color:pink;
+            font-weight: bold;
+        }
+        #c{
+            color:#c6cdff;
+        }
+        body{
+            background:#83b8ff;
+            color:white;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+        fieldset{
+            box-shadow:15px 15px 10px #0f6bae;
+            border:2px solid white;
+            border-style:ridge;
+            height:260px;
+            width:500px;
+            justify-content: center;
+            border-radius: 20px;
+            background:#248bd6;
+            transition:background-color 0.5s;
+        }
+        fieldset:hover{
+            background:#0f6bae;
+        }
+        .title{
+            text-shadow: #0f6bae 2px 2px 4px;
+        }
+        #button{
+            color:#248bd6;
+            border:3px solid white;
+            border-radius:20px;
+            height:40px;
+            width:120px;
+            font-weight:bold;
+            font-size: 15px;
+            transition:background-color 0.5s;
+        }
+        #button:hover{
+            background-color:#248bd6;
+            color:white; 
+            cursor: pointer;
+            border-style:ridge;
+        }
+        #num{
+            height:30px;
+            width:200px;
+            border:2px solid white;
+            border-radius: 20px;
+            border-style:ridge;
+            color:#248bd6;
+            font-weight: bold;
+            text-align: center;
+        }
+        span{
+            color:pink;
+            font-weight:bold;
+        }
+    </style>
+    </head>
+    <body>
+        <center>
+        <form onsubmit="return validate()">
+            <fieldset>
+            <h1 class="title">Guess the number game</h1>
+            <label>Enter a number (0 to 100) :</label>
+            <input type="number" id="num" min="0" max="100" required><br><br>
+            <input type="submit" value="Guess" id="button">
+            <p id="result"></p>
+            <p id="c">You got <span id="chance">10</span> chances left</p>
+            </fieldset>
+        </form>
+        </center>
+        <script>
+            var flag=0,count=10;
+            const rand_num=Math.floor(Math.random() * 101);
+            function validate(){
+            var n=parseInt(document.getElementById('num').value);
+            var res=document.getElementById('result');
+            var chance=document.getElementById('chance');
+            if(n==rand_num){
+                flag=1;
+                alert("Great 🎉 You guessed the number right ✅");
+                end();
+            }
+            else if(n>rand_num){
+                res.innerHTML="You guessed a bit higher📈";
+            }
+            else {
+                res.innerHTML="You guessed a bit lower📉";
+            }
+            count=count-1;
+            chance.innerHTML=count;
+            if(count>0){
+                return false;
+            }
+            else{
+                alert("You loss 🥺");
+                end();
+            }
+            function end(){
+                var s=prompt("Do you like to replay? y/n ");
+                if(s=='y'||s=='Y'){
+                    return true;
+                }
+                else 
+                {
+                    document.write("<CENTER><h3>Thanks for playing ☺️<h3><h1>BYEEEEEEE<h1>");
+                }
+            }
+        }
+        </script>
+    </body>
+</html>
