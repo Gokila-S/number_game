@@ -91,7 +91,7 @@
             var res=document.getElementById('result');
             var chance=document.getElementById('chance');
             if(n==rand_num){
-                alert("Great You guessed the number right");
+                alert("Great !!! You guessed the number right");
                 end();
             }
             else if(n>rand_num){
@@ -106,7 +106,7 @@
                 return false;
             }
             else{
-                alert("You loss");
+                alert(`You lost. The number is ${rand_num}`);
                 end();
             }
             function end(){
