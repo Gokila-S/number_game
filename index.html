@@ -1,74 +1,151 @@
 <html>
     <head>
-    <style>
-        #result{
-            color:pink;
-            font-weight: bold;
-        }
-        #c{
-            color:#c6cdff;
-        }
-        body{
-            background:#83b8ff;
-            color:white;
-            font-family:Verdana, Geneva, Tahoma, sans-serif;
-        }
-        fieldset{
-            box-shadow:15px 15px 10px #0f6bae;
-            border:2px solid white;
-            border-style:ridge;
-            height:260px;
-            width:500px;
-            display:flex;
-            flex-direction:column;
-            align-items: center;
-            justify-content: space-around;
-            border-radius: 20px;
-            margin:50px auto;
-            padding-bottom:20px;
-            background:#248bd6;
-            transition:background-color 0.5s;
-        }
-        fieldset:hover{
-            background:#0f6bae;
-        }
-        .input-group{
-            margin-bottom:20px;
-        }
-        .title{
-            text-shadow: #0f6bae 2px 2px 4px;
-        }
-        #button{
-            color:#248bd6;
-            border:3px solid white;
-            border-radius:20px;
-            min-height:40px;
-            width:120px;
-            font-weight:bold;
-            font-size: 15px;
-            transition:background-color 0.5s;
-        }
-        #button:hover{
-            background-color:#248bd6;
-            color:white; 
-            cursor: pointer;
-            border-style:ridge;
-        }
-        #num{
-            min-height:30px;
-            width:200px;
-            border:2px solid white;
-            border-radius: 20px;
-            border-style:ridge;
-            color:#248bd6;
-            font-weight: bold;
-            text-align: center;
-        }
-        span{
-            color:pink;
-            font-weight:bold;
-        }
-    </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #num:focus{
+                outline:none;
+                border-color:#ffffff;
+                box-shadow:0 0 0 3px rgba(255,255,255,0.3), 0 4px 15px rgba(0,0,0,0.15);
+                transform:scale(1.02);
+            }
+            
+            #result{
+                color:#ffb3d9;
+                font-weight: bold;
+                font-size:18px;
+                text-shadow:0 2px 4px rgba(0,0,0,0.3);
+                margin:10px 0;
+                min-height:25px;
+            }
+            #c{
+                color:#d6e3ff;
+                font-size:16px;
+                text-shadow:0 1px 3px rgba(0,0,0,0.3);
+            }
+            body{
+                background:linear-gradient(135deg, #83b8ff 0%, #6fa8dc 50%, #5d9cec 100%);
+                color:white;
+                font-family:Verdana, Geneva, Tahoma, sans-serif;
+                min-height:100vh;
+                margin:0;
+                padding:10px;
+            }
+            fieldset{
+                box-shadow:15px 15px 20px rgba(15, 107, 174, 0.4);
+                border:2px solid rgba(255,255,255,0.8);
+                border-style:ridge;
+                height:auto;
+                min-height:260px;
+                width:90%;
+                max-width:500px;
+                display:flex;
+                flex-direction:column;
+                align-items: center;
+                justify-content: space-around;
+                border-radius: 25px;
+                margin:50px auto;
+                padding:30px 20px;
+                background:rgba(36, 139, 214, 0.9);
+                backdrop-filter:blur(10px);
+                transition:all 0.3s ease;
+            }
+            fieldset:hover{
+                background:rgba(15, 107, 174, 0.95);
+                transform:translateY(-5px);
+                box-shadow:20px 20px 30px rgba(15, 107, 174, 0.5);
+            }
+            .input-group{
+                margin-bottom:20px;
+                width:100%;
+                text-align:center;
+            }
+            .title{
+                text-shadow: #0f6bae 3px 3px 6px;
+                font-size:clamp(1.5rem, 4vw, 2.2rem);
+                margin:0 0 25px 0;
+                font-weight:bold;
+                letter-spacing:1px;
+            }
+            #button{
+                color:#248bd6;
+                border:3px solid white;
+                border-radius:25px;
+                min-height:45px;
+                width:130px;
+                font-weight:bold;
+                font-size: 16px;
+                transition:all 0.3s ease;
+                cursor:pointer;
+                box-shadow:0 4px 15px rgba(36, 139, 214, 0.3);
+            }
+            #button:hover{
+                background-color:#248bd6;
+                color:white;
+                cursor: pointer;
+                border-style:ridge;
+                transform:translateY(-2px);
+                box-shadow:0 8px 20px rgba(36, 139, 214, 0.4);
+            }
+            #num{
+                min-height:35px;
+                width:min(220px, 80%);
+                border:2px solid rgba(255,255,255,0.8);
+                border-radius: 20px;
+                border-style:ridge;
+                color:#248bd6;
+                font-weight: bold;
+                text-align: center;
+                font-size:18px;
+                background:rgba(255,255,255,0.95);
+                transition:all 0.3s ease;
+                box-shadow:0 2px 10px rgba(0,0,0,0.1);
+            }
+            span{
+                color:#ffb3d9;
+                font-weight:bold;
+                font-size:20px;
+                text-shadow:0 2px 4px rgba(0,0,0,0.3);
+            }
+            
+            /* Responsive adjustments */
+            @media (max-width: 600px) {
+                fieldset {
+                    margin:20px auto;
+                    padding:15px;
+                    box-shadow:10px 10px 8px #0f6bae;
+                }
+                .title {
+                    font-size:1.5rem;
+                }
+                #button {
+                    width:100px;
+                    font-size:14px;
+                }
+                #num {
+                    width:90%;
+                    min-width:150px;
+                }
+            }
+            
+            @media (max-width: 400px) {
+                fieldset {
+                    margin:10px auto;
+                    padding:10px;
+                    border-radius:15px;
+                }
+                .title {
+                    font-size:1.3rem;
+                }
+                #button {
+                    width:90px;
+                    min-height:35px;
+                    font-size:13px;
+                }
+                .input-group {
+                    margin-bottom:15px;
+                }
+            }
+        </style>
     </head>
     <body>
         <form onsubmit="return validate()">
